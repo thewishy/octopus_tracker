@@ -47,8 +47,7 @@ def get_octopus_data(searchdate, fuel):
       return period["breakdown"]["unit_rates"]["raw"][searchdate.day-1]*1.05
       #break
 
-
-searchdate = datetime.datetime.now()
+      
 if sys.argv[2] == "today":
   rate = get_octopus_data(datetime.datetime.now(),sys.argv[1])
 else:
