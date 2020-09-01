@@ -22,7 +22,6 @@ def get_market_data():
     
     # Convert these BS4 tags to a string, splice them to remove <td></td> tags, and then cast the result as a float
     numbers = list(map(lambda e : float(str(e)[4:-5]), numbers))
-    #print(len(numbers))
     if len(numbers)>0:
       # Then we want the mean. This is in £/gW, we want p/kW, so *0.1
       wholesale_day_price = statistics.mean(numbers)*0.1
