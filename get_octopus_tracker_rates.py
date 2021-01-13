@@ -23,8 +23,8 @@ def get_market_data():
     # Convert these BS4 tags to a string, remove commas which are added if hourly prices exceed £1000, splice them to remove <td></td> tags, and then cast the result as a float
     floaties = []
     for number in numbers:
-      print(number)
-      print(float(str(number).replace(",","")[4:-5]))
+      #print(number)
+      #print(float(str(number).replace(",","")[4:-5]))
       floaties.append(float(str(number).replace(",","")[4:-5]))
     numbers = floaties
     if len(numbers)>0:
