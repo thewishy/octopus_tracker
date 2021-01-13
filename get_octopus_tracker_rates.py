@@ -20,8 +20,13 @@ def get_market_data():
     # Take HTML from request, find <td> tags, starting with the 4th entry (zero index) and skipping 4 after that. This should be the price
     numbers = BeautifulSoup(r.text, 'html.parser').find_all('td')[3::4]
     
-    # Convert these BS4 tags to a string, splice them to remove <td></td> tags, and then cast the result as a float
-    numbers = list(map(lambda e : float(str(e)[4:-5]), numbers))
+    # Convert these BS4 tags to a string, remove commas which are added if hourly prices exceed £1000, splice them to remove <td></td> tags, and then cast the result as a float
+    floaties = []
+    for number in numbers:
+      print(number)
+      print(float(str(number).replace(",","")[4:-5]))
+      floaties.append(float(str(number).replace(",","")[4:-5]))
+    numbers = floaties
     if len(numbers)>0:
       # Then we want the mean. This is in £/gW, we want p/kW, so *0.1
       wholesale_day_price = statistics.mean(numbers)*0.1
